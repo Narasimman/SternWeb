@@ -1,0 +1,56 @@
+.font-thin {
+	font-family: "Titillium Web", sans-serif;
+	font-weight: 200;
+}
+
+.font-semibold {
+	font-family: "Titillium Web", sans-serif;
+	font-weight: 600;
+}
+
+.font-light {
+	font-family: "Titillium Web", sans-serif;
+	font-weight: 300;
+}
+
+* {
+	position: relative;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background-color: #2f2f2f;
+    color: #e4e6e5;
+	padding-top: 90px;
+	font-family: "Titillium Web", sans-serif;
+	font-weight: normal;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+h1 {
+	font-family: "Titillium Web", sans-serif;
+    font-size: 40px;
+    margin: 0 0 -2px;
+}
+
+.courselist {
+	padding: 10px 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: auto;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}
+
+.footer p {
+	text-align: center;
+}
