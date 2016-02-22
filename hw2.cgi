@@ -32,8 +32,10 @@ print '<head>'
 print '<title>'
 print 'Contents of a users websys directory'
 print '</title>'
+print '<link rel="stylesheet" href="css/bootstrap.min.css">'
 print '</head>'
 print '<body>'
+print '<div style="margin:10% auto; width : 960px;">'
 
 form=cgi.FieldStorage()
 
@@ -42,29 +44,25 @@ if "userid" not in form:
    print "userid field not provided"
 # retrieve the value of the userid field from the form
 Userid =form["userid"].value
-# Now construct the full path to their websys directory
-# it should be  /homedir/grad/fchar/userid/public_html/websys
-# where FCHAR is the first character of the userid
-# type 'pwd' at the unix prompt to see you full path
-
-# Note that we can treat strings as an array of characters
-# with the first element at location 0
-
 webSysPath = "/homedir/grad/" + Userid[0] + "/"  + Userid + "/public_html/websys"
-print 'List of user ' + Userid + "'s" + ' websys directory'
+print '<h2>List of user ' + Userid + "'s" + ' websys directory</h2>'
 
 lscommand = 'ls ' + webSysPath
-#
-# tell html the next stuff is preformatted
-# otherwise it ignores line breaks and will ruin it all together
-#
-print '<pre>'
+
+
+print '<table class="table table-striped">'
+print '<th>Contents</th>'
 status,lsresults = commands.getstatusoutput(lscommand)
 arr = lsresults.split("\n")
-for res in arr:
-    print "<a href='" + res + "'>" + res + "</a>"
 
-print '</pre>'
+if status == 0:
+    for res in arr:
+        print "<tr><td><a href='" + res + "'>" + res + "</a></td></tr>"
+else:
+    print "Not a valid userid. Please enter a valid user id."
+
+print '</table>'
+print '</div>'
 print '</body>'
 print '</html>'
 
