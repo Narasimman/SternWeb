@@ -35,6 +35,26 @@ h1, h2, h3 {
 	font-family: "Titillium Web", sans-serif;
 }
 
+.navbar {
+	background-color: rgba( 0, 0, 0, .5 );
+    border-bottom: 1px solid #bfbfbf;
+    font-size: 12px;
+    transition: .25s all linear;
+    color: #fff !important
+}
+.navbar .nav a {
+    color: #e4e6e5;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    transition: all .5 linear;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+	background-color: inherit;
+	outline: none;
+}
+
 #aboutme {
 	font-weight: bold;
 	font-style: italic;

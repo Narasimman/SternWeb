@@ -1,0 +1,91 @@
+.font-thin {
+	font-family: "Titillium Web", sans-serif;
+	font-weight: 200;
+}
+
+.font-semibold {
+	font-family: "Titillium Web", sans-serif;
+	font-weight: 600;
+}
+
+.font-light {
+	font-family: "Titillium Web", sans-serif;
+	font-weight: 300;
+}
+
+* {
+	position: relative;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background-color: #2f2f2f;
+    color: #e4e6e5;
+	font-family: "Titillium Web", sans-serif;
+	font-weight: normal;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+h1, h2, h3 {
+	font-family: "Titillium Web", sans-serif;
+}
+
+#aboutme {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 20px;
+	padding: 20px 0;
+}
+
+.headshot {
+	padding: 30px 0;
+}
+
+.social {
+	padding: 30px 0;
+}
+
+a {
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.social {
+	padding: 10px 20px;
+}
+
+#slide-1 {
+	background-color: #2f2f2f;
+    color: #e4e6e5;
+	padding-top: 50px;	
+	padding-bottom: 140px;
+}
+
+#slide-2 {
+    background-color: #1abc9c;
+    color: #e4e6e5;
+    padding: 50px 0;
+}
+
+#slide-3 {
+	background-color: #34495e;
+    color: #e4e6e5;
+	padding: 50px;	
+}
+
+.footer {
+  width: 100%;
+  margin: auto;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}
+
+.footer p {
+	text-align: center;
+}

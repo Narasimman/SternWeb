@@ -57,7 +57,8 @@ arr = lsresults.split("\n")
 
 if status == 0:
     for res in arr:
-        print "<tr><td><a href='" + res + "'>" + res + "</a></td></tr>"
+	filepath = "/~" + Userid + "/websys/" + res
+        print "<tr><td><a href='" + filepath + "'>" + res + "</a></td></tr>"
 else:
     print "Not a valid userid. Please enter a valid user id."
 
