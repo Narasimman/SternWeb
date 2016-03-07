@@ -4,7 +4,7 @@
 	#container {
 		margin: 0 auto;
 		width: 50%;
-		margin-top: 10%;
+		margin-top: 2%;
 	}
 
 	.square {
@@ -44,6 +44,7 @@ var TicTacToe = {
 
 		$("#container").html('');
                 /* create the square for each row, and give them an id of 0 to 9 */
+		$("#container").append('<h2>Intelligent Tic Tac Toe. Beat me if you can!!! </h2><p>First move is yours!</p>');
 
 		for (i = 0; i < 9; i++) {
 			$("#container").append("<div id=" + i + " onclick='TicTacToe.clicked(this.id)' class='square'></div>");
@@ -58,6 +59,7 @@ var TicTacToe = {
                /*  X makes the first move   */
 		this.player = 'X';
 		this.playercolor = 'blue';
+		this.playertype = 0; //0 - human, 1 - computer
 	},
 
 	/* Called on each square click. Displays correct symbol for the clicked  */
@@ -97,13 +99,63 @@ var TicTacToe = {
 
 				this.player = (this.player == 'X')? 'O': 'X';
 				this.playercolor = (this.playercolor == 'blue')? 'red': 'blue';
+
+	
+			if(this.playertype == 0) {
+				setTimeout(function(){TicTacToe.computerTurn();},100);
+			
+			} else {
+				this.playertype = 0;
+			}
 		}
 			
 	},
 
+	computerTurn: function() {
+		//check if computer has a winning move
+		for(var i = 0; i < 9; i++) {
+		   if("" == $('#' + i).html()){
+			if(this.is_game_won('' + i + '', i)) {
+				r = i;
+				this.playertype = 1;
+		                this.clicked('' + r + '');
+				return;
+			}
+		  }
+		}
+
+		//check if opponent has a winning move
+		this.player = 'X';
+		for(var i = 0; i < 9; i++) {
+                  if("" == $('#' + i).html()){   
+		     if(this.is_game_won('' + i + '', i)) {
+                                r = i;
+				this.player = 'O';
+                                this.playertype = 1;
+                                this.clicked('' + r + '');
+                                return;
+                        }
+		  }
+                }
+		this.player = 'O';
+
+		//else pick a random move
+		var r = this.getRandomInt(0,8);
+		
+		while("" != $('#' + r).html()) {
+			r = this.getRandomInt(0,8);
+		}
+		this.playertype = 1;
+		this.clicked('' + r + '');
+	},
+
+	getRandomInt: function(min, max) {
+    		return Math.floor(Math.random() * (max - min + 1)) + min;
+	},
+
 	/* Did clicking on this square result in a victory? */
 
-	is_game_won: function(square_id) {
+	is_game_won: function(square_id, isWinningMove) {
 		for (i in this.winning_squares) {
 			if (jQuery.inArray(square_id, this.winning_squares[i]) != -1) {
 				var squares = this.winning_squares[i];
@@ -111,6 +163,9 @@ var TicTacToe = {
 				for (j in squares) {
 					console.log(squares[j]);
 					pattern += $('#' + squares[j]).html();
+				}
+				if(isWinningMove != undefined) {
+					pattern += this.player;
 				}
 				symbol = this.player;
 				if (symbol + symbol + symbol == pattern) {
@@ -156,6 +211,8 @@ $(document).ready(function(){
 </head>
 
 <body>
-<div id="container"></div>
+<div id="container">
+
+</div>
 </body>
 </html>
